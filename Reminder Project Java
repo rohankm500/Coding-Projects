@@ -1,0 +1,76 @@
+import java.util.*;
+
+
+
+public class Greeting{
+  private String name;
+
+  public Greeting(String n){
+    name = n;
+  }
+
+  public void setName(String n){
+    name = n;
+  }
+
+  public String hello(){
+    return "Hello there " + name;
+  }
+
+  public String goodbye(){
+    return "Sorry to see you go " + name;
+  }
+
+  public String randomHello(ArrayList<String> words){
+    int x = words.size();
+    return words.get((int)(Math.random()*x));
+  }
+
+}
+
+
+import java.util.*;
+//Don't forget Your import statements
+
+class Main {
+  public static void main(String[] args) {
+    //1
+    Scanner myObj = new Scanner(System.in);  
+    System.out.println("Enter username");
+    String userName = myObj.nextLine();  
+    //2
+    Greeting greeting1 = new Greeting(userName);
+    //3
+    System.out.println(greeting1.hello());
+    //4
+    System.out.println("Enter 2 more usernames");
+    String userName1 = myObj.nextLine();
+    String userName2 = myObj.nextLine();
+    //5
+    greeting1.setName(userName1);
+    //6
+    Greeting greeting2 = new Greeting(userName2);
+    //7
+    System.out.println(greeting1.hello());
+    System.out.println(greeting2.goodbye());
+    //8
+    System.out.println("Enter random words, type quit to exit");
+    ArrayList<String> words = new ArrayList<String>();
+    String input = " ";
+    while(true){
+      input = myObj.nextLine();
+      if(input.toLowerCase().equals("quit")){
+        break;
+      }
+      words.add(input);
+    }
+    //
+    System.out.println(greeting2.randomHello(words));
+
+
+
+  }
+}
+
+
+
